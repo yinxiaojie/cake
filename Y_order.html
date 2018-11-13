@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!--Bootstrap的css-->
+    <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"-->
+          <!--integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"-->
+          <!--crossorigin="anonymous">-->
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_911350_uvmy3mulxu.css">
+    <link rel="stylesheet" href="css/Y_order.css">
+    <link rel="stylesheet" href="css/popbox.css">
+    <script src="js/jQuery.js"></script>
+    <script src="cityselect20160808/jquery/jquery-1.9.1.min.js"></script>
+    <script src="cityselect20160808/cityselect/cityselect.js"></script>
+    <link href="cityselect20160808/cityselect/cityLayout.css" type="text/css" rel="stylesheet">
+    <title>订单填写</title>
+</head>
+<style>
+    .shoppingCar{
+        width: 1200px;
+        margin:0 auto 90px;
+        height:auto;
+    }
+    .shoppingCar .top{
+        width: 100%;
+        height: 76px;
+    }
+    .shoppingCar .top .tittle{
+        width: 271px;
+        height:100%;
+        background: url("img/shopping.png") no-repeat center /271px 80px;
+    }
+    .cartMain{
+        width: 100%;
+        height: auto;
+    }
+    .cartMain_hd{
+        height: 56px;
+        line-height: 56px;
+        background: #f4f4f4;
+    }
+    .order_lists {
+        width: 100%;
+        height: 176px;
+        border: 2px solid #e5e5e5;
+        padding: 0 35px 0 40px;
+        box-sizing: border-box;
+        margin-bottom: 30px;
+    }
+    .cartMain_hd .cartTop{
+        width: 100%;
+        height:56px;
+        border:0;
+    }
+    .order_lists li {
+        float: left;
+        height: 100%;
+        font-size: 18px;
+        color: rgba(0,0,0,0.8);
+        text-align: center;
+    }
+    .order_lists .list_chk {
+        position: relative;
+        width: 50px;
+    }
+    .cartMain_hd .cartTop .list_chk{
+        width: 90px;
+        position: relative;
+        text-indent: 50px;
+    }
+    .order_lists .list_chk input[type="checkbox"] {
+        position: absolute;
+        z-index: 0;
+        left: -20px;
+        top: -20px;
+    }
+    input[type="checkbox"] {
+        display: none;
+    }
+    label {
+        display: inline-block;
+        z-index: 1;
+        border: 3px solid #dcdcdc;
+        border-radius: 50%;
+        width: 22px;
+        height: 22px;
+        cursor: pointer;
+        background: #fafafa;
+        box-sizing: border-box;
+    }
+    .order_lists .list_chk label {
+        margin: 72px 0 0 0;
+    }
+    .cartMain_hd .cartTop .list_chk label {
+        position: absolute;
+        left: 10px;
+        top: 16px;
+        margin: 0
+    }
+    label.mark{
+        background: #fd719f;
+    }
+    .order_lists .list_con {
+        width: 460px;
+    }
+    .cartMain_hd .cartTop .list_con{
+        width: 420px;
+        text-indent: 60px;
+        text-align: left;
+    }
+    .order_lists .list_price{
+        width: 140px
+    }
+    .order_lists .list_amount{
+        width: 190px
+    }
+    .order_lists .list_sum{
+        width: 140px
+    }
+    .order_lists .list_op{
+        width: 125px
+    }
+
+    .cartBox {
+        width: 100%;
+        margin-top: 40px;
+    }
+    .order_lists .list_con .list_img {
+        /*width: 130px;*/
+        height: 120px;
+        margin-top: 26px;
+        float: left;
+        margin-left: 20px;
+    }
+
+    .order_lists .list_con .list_img img {
+        height: 100%;
+        vertical-align:middle;
+    }
+    .order_lists .list_con .list_text {
+        margin: 52px 0 0;
+        line-height: 18px;
+        width: 290px;
+        float: left;
+        text-align: left;
+        padding-left: 20px;
+        box-sizing: border-box;
+    }
+    .order_lists .list_con .list_text a span{
+        display: block;
+    }
+    .order_lists .list_con .list_text a .commName{
+        font-size: 20px;
+        color: rgba(0,0,0,0.9);
+        margin-bottom: 14px
+    }
+    .order_lists .list_con .list_text a .commDes{
+        font-size: 14px;
+        color: rgba(0,0,0,0.7)
+    }
+    .order_lists .list_price .price {
+        line-height: 172px;
+        color: rgba(0,0,0,0.8);
+        font-weight: bold;
+        font-size: 16px
+    }
+    .order_lists .list_amount .amount_box {
+        margin-top: 71px;
+        margin-left: 25px;
+        width: 140px;
+        height: 30px;
+        position: relative;
+    }
+    .order_lists .list_amount .amount_box a {
+        float: left;
+        height: 25px;
+        width: 25px;
+        border: 2px solid #dcdcdc;
+        background: #fff;
+        text-align: center;
+        line-height: 25px;
+        color: rgba(0,0,0,0.6);
+        font-size: 20px;
+        position: absolute;
+        top: 0;
+        border-radius: 50%
+    }
+    .order_lists .list_amount .amount_box .reduce {
+        left: 0;
+    }
+    .order_lists .list_amount .amount_box .plus {
+        right: 0;
+    }
+    .order_lists .list_amount .amount_box .reSty {
+        color: #cbcbcb;
+    }
+    .order_lists .list_amount .amount_box input {
+        width: 58px;
+        height: 26px;
+        line-height: 26px;
+        border: 1px solid #c9c9c9;
+        color: rgba(0,0,0,0.7);
+        font-size: 18px;
+        text-align: center;
+        background-color: #fff;
+        z-index: 2;
+        position: absolute;
+        left: 41px;
+        float: left;
+        border-radius: 13px;
+    }
+    .order_lists .list_sum .sum_price{
+        line-height: 172px;
+        color: rgba(253,113,159,0.9);
+        font-weight: bold;
+        font-size: 22px
+    }
+    .list_op p{
+        width: 124px;
+        height: 34px;
+        border-radius:19px;
+        text-align: center;
+        line-height: 34px;
+        font-size: 16px;
+    }
+    .list_op .del {
+        border:2px solid #fd719f;
+        margin-top: 43px;
+    }
+    .list_op .del a{
+        color: rgba(0,0,0,0.8);
+    }
+    .list_op .collect{
+        margin-top: 10px;
+        background: #fd719f;
+        border:2px solid #fd719f;
+    }
+    .list_op .collect a{
+        color: rgba(255,255,255,0.8);
+    }
+    .bar_wrapper{
+        width: 100%;
+        height: 140px;
+        padding: 0 0 0 40px;
+        box-sizing: border-box;
+    }
+    .bar_wrapper .account{
+        width: 100%;
+        height: 56px;
+        line-height: 56px
+    }
+    .bar_wrapper .list_chk {
+        width: 90px;
+        position: relative;
+        text-indent: 50px;
+    }
+    .bar_wrapper .list_chk label {
+        position: absolute;
+        left: 10px;
+        top: 16px;
+        margin: 0;
+    }
+    .bar_wrapper .list_op{
+        width: 310px;
+        height: 100%;
+    }
+    .bar_wrapper .list_op p{
+        float: left;
+        margin:9px;
+    }
+    .bar_wrapper .account .piece{
+        min-width: 110px;
+        margin-right: 50px;
+        height: 56px;
+        line-height: 56px;
+        font-size: 20px;
+        color: rgba(0,0,0,0.9);
+    }
+    .bar_wrapper .account .piece .piece_num{
+        display: inline-block;
+        padding: 0 10px;
+        font-weight: bold;
+        font-size: 40px;
+        color: #fd719f
+    }
+    .bar_wrapper .account .totalMoney {
+        min-width: 190px;
+        height: 56px;
+        line-height: 56px;
+        font-size: 20px;
+        color: rgba(0,0,0,0.9);
+    }
+    .bar_wrapper .totalMoney .total_text {
+        font-weight: bold;
+        font-size: 40px;
+        margin-left: 5px;
+        color: #fd719f
+    }
+    .calBtn_box{
+        width: 100%;
+        height: 56px;
+        margin-top: 20px
+    }
+    .calBtn_box .calBtn{
+        width: 138px;
+        height: 50px;
+        box-sizing: border-box;
+        border:4px solid #e75988;
+        background: #fd719f;
+        font-size: 22px;
+        text-align: center;
+        line-height: 42px;
+        float: right;
+        border-radius: 25px;
+    }
+    .calBtn_box .calBtn a{
+        display: block;
+        color: #fff
+    }
+</style>
+<body>
+<header>
+    <ul class="fl">
+        <li><a href="#:;" onclick="popbox2()">登录</a></li>
+        <li><a href="#:;" onclick="popbox()">注册</a></li>
+    </ul>
+    <div class="inputbox fr">
+        <input type="text" class="fr">
+        <img src="img/img038.jpg" alt="">
+    </div>
+</header>
+<nav>
+    <div class="navbox">
+        <div class="leftblock fl"></div>
+        <div class="middleblock fl" >
+            <img src="img/logo.jpg" alt="">
+        </div>
+        <div class="rightblock fl">
+            <ul class="navlist">
+                <li class="option navselected">
+                    <div>爱礼推荐</div>
+                    <div class="Ename">LOVE GIFT</div>
+                </li>
+                <li class="option">
+                    <div>马卡龙</div>
+                    <div class="Ename">malalong</div>
+                </li>
+                <li class="option">
+                    <div>甜甜圈</div>
+                    <div class="Ename">tiantianquan</div>
+                </li>
+                <li class="option">
+                    <div>零食糕点</div>
+                    <div class="Ename">gaodian</div>
+                </li>
+                <li class="icon">
+                    <div class="fl car">
+                        <a href="shoppingCar.html"><img src="img/shoppingcar.jpg" alt=""></a>
+                    </div>
+                    <div class="fl person">
+                        <a href="person.html"><img src="img/person.jpg" alt=""></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="process">
+    <div class="process_side">
+        <div class="process_box">
+            <ul class="process_main">
+                <li>
+                    <div class="li_L">
+                        <div class="cir_big">
+                            <div class="cir_small"></div>
+                        </div>
+                    </div>
+                    <div class="li_R">
+                        <h4>购物车</h4><span>SHOPPING CAR</span>
+                        <div class="dottod"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="li_L">
+                        <div class="cir_big">
+                            <div class="cir_small"></div>
+                        </div>
+                    </div>
+                    <div class="li_R" style="width: 190px">
+                        <h4 style="margin-left: 5px">提交订单</h4><span>SUPPORT ORDERNG</span>
+                        <div class="dottod" style="margin-left: 13px"></div>
+                    </div>
+                </li>
+                <li>
+                    <div class="li_L">
+                        <div class="cir_big" style="background: #dcdcdc">
+                            <div class="cir_small" style="background: white"></div>
+                        </div>
+                    </div>
+                    <div class="li_R">
+                        <h4 style="color: black">支付方式</h4><span>THE PAYENT</span>
+                        <!--<div class="dottod"></div>-->
+                    </div>
+                </li>
+                <li>
+                    <div class="li_L">
+                        <div class="cir_big" style="background: #dcdcdc">
+                            <div class="cir_small" style="background: white"></div>
+                        </div>
+                    </div>
+                    <div class="li_R">
+                        <h4 style="color: black;margin-left: 2px">订单完成</h4><span>ORDER SUCSS</span>
+                        <!--<div class="dottod"></div>-->
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="receive_msg">
+    <div class="receive_side">
+        <div class="rec_top">
+            <div class="res_topL" style="float: left">
+                <img src="img/img70.jpg" alt="" style="float: left">
+                <h4 style="font-size: 25px;font-weight: bold">收货信息</h4>
+                <h5 style="font-size: 20px;color: #fba748;font-weight: bold">SHOPPING CAR</h5>
+            </div>
+            <a href="javascript:;" class="res_topR">新增收货地址+</a>
+        </div>
+        <ul>
+            <li>
+                <div class="uname">
+                    <h4 style="float: left;margin-top: 6px;font-weight: bold">岳飞飞</h4>
+                    <div class="moren">设为默认</div>
+                </div>
+                <div class="address">
+                    <i class="iconfont icon-dizhi" style="margin-right: 12px;color: #b1b1b1;"></i>山西省太原平阳路凯通大厦2楼
+                </div>
+                <div class="telenum">
+                    <i class="iconfont icon-tel" style="margin-right: 12px;color: #b1b1b1;"></i>15110398236
+                </div>
+                <div class="twoicon">
+                    <i class="iconfont icon-qianbi" style="font-size: 22px"></i>
+                    <i class="iconfont icon-lajitong" style="font-size: 22px"></i>
+                </div>
+            </li>
+            <li>
+                <div class="uname">
+                    <h4 style="float: left;margin-top: 6px;font-weight: bold">岳飞飞</h4>
+                    <div class="moren">设为默认</div>
+                </div>
+                <div class="address">
+                    <i class="iconfont icon-dizhi" style="margin-right: 12px;color: #b1b1b1;"></i>山西省太原平阳路凯通大厦2楼
+                </div>
+                <div class="telenum">
+                    <i class="iconfont icon-tel" style="margin-right: 12px;color: #b1b1b1;"></i>15110398236
+                </div>
+                <div class="twoicon">
+                    <i class="iconfont icon-qianbi" style="font-size: 22px"></i>
+                    <i class="iconfont icon-lajitong" style="font-size: 22px"></i>
+                </div>
+            </li>
+            <li>
+                <div class="uname">
+                    <h4 style="float: left;margin-top: 6px;font-weight: bold">岳飞飞</h4>
+                    <div class="moren">设为默认</div>
+                </div>
+                <div class="address">
+                    <i class="iconfont icon-dizhi" style="margin-right: 12px;color: #b1b1b1;"></i>山西省太原平阳路凯通大厦2楼
+                </div>
+                <div class="telenum">
+                    <i class="iconfont icon-tel" style="margin-right: 12px;color: #b1b1b1;"></i>15110398236
+                </div>
+                <div class="twoicon">
+                    <i class="iconfont icon-qianbi" style="font-size: 22px"></i>
+                    <i class="iconfont icon-lajitong" style="font-size: 22px"></i>
+                </div>
+            </li>
+            <li>
+                <div class="uname">
+                    <h4 style="float: left;margin-top: 6px;font-weight: bold">岳飞飞</h4>
+                    <div class="moren">设为默认</div>
+                </div>
+                <div class="address">
+                    <i class="iconfont icon-dizhi" style="margin-right: 12px;color: #b1b1b1;"></i>山西省太原平阳路凯通大厦2楼
+                </div>
+                <div class="telenum">
+                    <i class="iconfont icon-tel" style="margin-right: 12px;color: #b1b1b1;"></i>15110398236
+                </div>
+                <div class="twoicon">
+                    <i class="iconfont icon-qianbi" style="font-size: 22px"></i>
+                    <i class="iconfont icon-lajitong" style="font-size: 22px"></i>
+                </div>
+            </li>
+            <li>
+                <div class="uname">
+                    <h4 style="float: left;margin-top: 6px;font-weight: bold">岳飞飞</h4>
+                    <div class="moren">设为默认</div>
+                </div>
+                <div class="address">
+                    <i class="iconfont icon-dizhi" style="margin-right: 12px;color: #b1b1b1;"></i>山西省太原平阳路凯通大厦2楼
+                </div>
+                <div class="telenum">
+                    <i class="iconfont icon-tel" style="margin-right: 12px;color: #b1b1b1;"></i>15110398236
+                </div>
+                <div class="twoicon">
+                    <i class="iconfont icon-qianbi" style="font-size: 22px"></i>
+                    <i class="iconfont icon-lajitong" style="font-size: 22px"></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="pay">
+    <div class="pay_side">
+        <div class="pay_top">
+            <div class="pay_top_img" style="float: left">
+                <img src="img/img009.jpg" alt="" style="width: 91px;height: 71px">
+            </div>
+            <div class="pay_top_word" style="float: left">
+                <h4>支付方式</h4>
+                <h5>SHOPPING CAR</h5>
+            </div>
+        </div>
+        <div class="pay_bottom">
+            <ul>
+                <li>
+                    <h4>在线支付（推荐）</h4>
+                    <h5>支持主流银行卡、微信、支付宝、银联等平台付款，方便快捷</h5>
+                </li>
+                <li>
+                    <h4>货到付款</h4>
+                    <h5>部分站点不支持刷卡支付，具体请咨询您当地快递公司</h5>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<section class="shoppingCar">
+    <div class="top">
+        <div class="tittle"></div>
+    </div>
+    <div class="cartMain">
+        <div class="cartMain_hd">
+            <ul class="order_lists cartTop">
+                <li class="list_chk">
+                    <!--所有商品全选-->
+                    <input type="checkbox" id="all" class="whole_check">
+                    <label for="all"></label>
+                    全选
+                </li>
+                <li class="list_con">商品信息</li>
+                <li class="list_price">单价</li>
+                <li class="list_amount">数量</li>
+                <li class="list_sum">小计</li>
+                <!--<li class="list_op">操作</li>-->
+            </ul>
+        </div>
+    </div>
+    <div class="cartBox">
+        <ul class="order_lists">
+            <li class="list_chk">
+                <input type="checkbox" id="checkbox_2" class="son_check">
+                <label for="checkbox_2"></label>
+            </li>
+            <li class="list_con">
+                <div class="list_img">
+                    <a href="javascript:;">
+                        <img src="img/img009.jpg" alt="">
+                    </a>
+                </div>
+                <div class="list_text">
+                    <a href="javascript:;">
+                        <p class="commName">
+                            芒果奶油蜂蜜蛋糕
+                        </p>
+                        <span class="commDes">
+                    			cake配方芒果香果慕水果百香果慕斯夹心
+                    		</span>
+                        <span class="commDes">
+                    			1盒8粒装
+                        </span>
+                    </a>
+                </div>
+            </li>
+            <li class="list_price">
+                <p class="price">
+                    268.00
+                </p>
+            </li>
+            <li class="list_amount">
+                <div class="amount_box">
+                    <a href="javascript:;" class="reduce reSty">-</a>
+                    <input type="text" value="1" class="sum">
+                    <a href="javascript:;" class="plus">+</a>
+                </div>
+            </li>
+            <li class="list_sum">
+                <p class="sum_price">
+                    268.00
+                </p>
+            </li>
+            <!--<li class="list_op">-->
+            <!--<p class="del">-->
+            <!--<a href="javascript:;" class="delBtn">删除</a>-->
+            <!--</p>-->
+            <!--<p class="collect">-->
+            <!--<a href="javascript:;" class="colBtn">移入收藏夹</a>-->
+            <!--</p>-->
+            <!--</li>-->
+        </ul>
+        <ul class="order_lists">
+            <li class="list_chk">
+                <input type="checkbox" id="checkbox_3" class="son_check">
+                <label for="checkbox_3"></label>
+            </li>
+            <li class="list_con">
+                <div class="list_img">
+                    <a href="javascript:;">
+                        <img src="img/img002.png" alt="">
+                    </a>
+                </div>
+                <div class="list_text">
+                    <a href="javascript:;">
+                        <p class="commName">
+                            芒果奶油蜂蜜蛋糕
+                        </p>
+                        <span class="commDes">
+                    			cake配方芒果香果慕水果百香果慕斯夹心
+                    		</span>
+                        <span class="commDes">
+                    			1盒8粒装
+                        </span>
+                    </a>
+                </div>
+            </li>
+            <li class="list_price">
+                <p class="price">
+                    268.00
+                </p>
+            </li>
+            <li class="list_amount">
+                <div class="amount_box">
+                    <a href="javascript:;" class="reduce reSty">-</a>
+                    <input type="text" value="1" class="sum">
+                    <a href="javascript:;" class="plus">+</a>
+                </div>
+            </li>
+            <li class="list_sum">
+                <p class="sum_price">
+                    268.00
+                </p>
+            </li>
+        </ul>
+        <ul class="order_lists">
+            <li class="list_chk">
+                <input type="checkbox" id="checkbox_4" class="son_check">
+                <label for="checkbox_4"></label>
+            </li>
+            <li class="list_con">
+                <div class="list_img">
+                    <a href="javascript:;">
+                        <img src="img/img008.jpg" alt="">
+                    </a>
+                </div>
+                <div class="list_text">
+                    <a href="javascript:;">
+                        <p class="commName">
+                            芒果奶油蜂蜜蛋糕
+                        </p>
+                        <span class="commDes">
+                    			cake配方芒果香果慕水果百香果慕斯夹心
+                    		</span>
+                        <span class="commDes">
+                    			1盒8粒装
+                        </span>
+                    </a>
+                </div>
+            </li>
+            <li class="list_price">
+                <p class="price">
+                    268.00
+                </p>
+            </li>
+            <li class="list_amount">
+                <div class="amount_box">
+                    <a href="javascript:;" class="reduce reSty">-</a>
+                    <input type="text" value="1" class="sum">
+                    <a href="javascript:;" class="plus">+</a>
+                </div>
+            </li>
+            <li class="list_sum">
+                <p class="sum_price">
+                    268.00
+                </p>
+            </li>
+        </ul>
+    </div>
+    <div class="bar_wrapper">
+        <div class="account">
+            <div class="list_chk fl">
+                <!--所有商品全选-->
+                <input type="checkbox" id="all1" class="whole_check">
+                <label for="all1"></label>
+                全选
+            </div>
+            <div class="fr">
+                <div class="piece fl">
+                    共选择
+                    <span class="piece_num">0</span>
+                    件商品
+                </div>
+                <div class="totalMoney fr">
+                    商品价格总计
+                    <strong class="total_text">0.00</strong>
+                </div>
+            </div>
+        </div>
+        <div class="calBtn_box">
+            <div class="calBtn"><a href="javascript:;">去付款</a></div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <ul class="footerbox">
+        <li class="Ffirst fl">
+            <ul>
+                <li style="font-size: 16px">联系方式</li>
+                <li style="font-size: 18px;font-weight: bold" >CONTACT</li>
+                <li style="margin-top: 10px">
+                    <img src="img/footperson.jpg" alt="">
+                    <span style="font-size: 14px">QQ:1234567800</span>
+                </li>
+                <li><img src="img/footperson.jpg" alt="">
+                    <span style="font-size: 14px">QQ:1234567800</span>
+                </li>
+                <li style="margin-top: 20px">
+                    <img src="img/tel.jpg" alt="" >
+                    <span style="font-size: 16px;font-weight: bold" >400-987-099</span>
+                </li>
+            </ul>
+        </li>
+        <li class="Fsecond fl">
+            <ul class="fr">
+                <li style="font-size: 16px">常见问题</li>
+                <li style="font-weight: bold;font-size: 18px">PROBLEM</li>
+                <li>购物问题</li>
+                <li>物流问题</li>
+                <li>支付问题</li>
+                <li>售后问题</li>
+                <li>其他问题</li>
+            </ul>
+        </li>
+        <li class="Fsecond fl Fthird">
+            <ul class="fr">
+                <li style="font-size: 16px">网站导航</li>
+                <li style="font-weight: bold;font-size: 18px">VAVIGATION</li>
+                <li>热门精选</li>
+                <li>折扣专区</li>
+                <li>会员专区</li>
+                <li>本周精选</li>
+                <li>全部商品</li>
+            </ul>
+        </li>
+        <li class="Fforth fl">
+            <div class="footerCar fl" >
+                <img src="img/footercar.jpg" alt="">
+                <span>24小时送货上门</span>
+            </div>
+            <div class="footerCar fl">
+                <img src="img/footercar.jpg" alt="">
+                <span>24小时送货上门</span>
+            </div>
+            <div class="footerCar fl">
+                <img src="img/footercar.jpg" alt="">
+                <span>24小时送货上门</span>
+            </div>
+            <div class="footerCar fl">
+                <img src="img/footercar.jpg" alt="">
+                <span>24小时送货上门</span>
+            </div>
+        </li>
+    </ul>
+</footer>
+<!--新增地址弹框-->
+<div class="box">
+    <div class="main">
+        <div class="line">
+            <h4>新增地址</h4>
+            <div id="cancel">×</div>
+        </div>
+        <div class="main_side">
+            <h4>为提高配送时效，请您尽量准确填写四级地址</h4>
+            <form action="">
+                <ul class="input_box">
+                    <li><span>*</span>&nbsp;收&nbsp;货&nbsp;人：&nbsp;<input placeholder="请填写您的姓名" name="username"></li>
+                    <li><span>*</span>&nbsp;所在区域：<input name="" id="citySelect"  type="text"  class="city_input" readonly="readonly"></li>
+                    <li><span>*</span>&nbsp;详细地址：<input placeholder="街道名称或小区名称"></li>
+                    <li><span>*</span>&nbsp;手机号码：<input placeholder="请输入手机号码（重要必填）" name="telenumber" maxlength="11"></li>
+                    <li>&nbsp;&nbsp;&nbsp;电话号码：<input placeholder="请输入电话号码（选填）" name="phonenumber" maxlength="13"></li>
+                    <input type="checkbox" class="checkbox" style="margin-top: 30px;margin-left: 96px"><span style="font-size: 14px">设置为默认收货地址</span>
+                    <div class="twobtn">
+                        <button class="twobtnL">保存</button>
+                        <button class="twobtnR">取消</button>
+                    </div>
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>
+<!--弹框  登录-->
+<section class="shade shade2">
+    <div class="login popbox2">
+        <main>
+            <div class="login-box">
+                <form action="">
+                    <div class="inputbox">
+                        <div class="i-logo"></div>
+                        <input type="text" class="username" name="" placeholder="请输入用户名/账号/手机号">
+                        <div class="i-ok i-ok1">√</div>
+                        <div class="i-no i-no1">!</div>
+                        <div class="tip tip1">请输入正确的手机号</div>
+                    </div>
+                    <div class="inputbox">
+                        <div class="i-logo i-logo2"></div>
+                        <input type="password" class="password" name="" placeholder="请输入您的密码">
+                        <div class="i-ok i-ok2">√</div>
+                        <div class="i-no i-no2">!</div>
+                        <div class="tip tip2">密码错误！</div>
+                    </div>
+                    <div class="remember">
+                        <input type="checkbox" class="ck">
+                        <a href="" class="forget">忘记密码？</a>
+                    </div>
+                    <button class="login-btn">马上登录</button>
+                    <span>还不是会员？<a href="#;;" class="">立马去注册</a></span>
+                </form>
+                <div class="share">
+                    <div><img src="img/qq.png" alt=""></div>
+                    <div><img src="img/weixin.png" alt=""></div>
+                    <div><img src="img/zfb.png" alt=""></div>
+                </div>
+            </div>
+        </main>
+    </div>
+</section>
+<!--注册-->
+<section class="shade">
+    <div class="popbox">
+        <div class="login-img"><div>立即<br>注册</div>WE<br>TO<br>EAT</div>
+        <div class="img-right"></div>
+        <main>
+            <input type="text" placeholder="请输入您的手机号码" class="reg-user">
+            <div class="YanZhengMa">
+                <input type="text" placeholder="短信校验码" class="reg-yzm">
+                <div class="get-yzm">获取短信校验码</div>
+            </div>
+            <input type="text" placeholder="请输入您的密码" class="reg-passwd">
+            <input type="text" placeholder="请再次输入您的密码" class="reg-passwd-re">
+            <button class="reg-btn">立即注册</button>
+            <p>已有账号? <span class="back-login">返回登录</span></p>
+        </main>
+    </div>
+</section>
+</body>
+<script src="js/shoplist.js"></script>
+<script src="js/shoppingCar.js"></script>
+<script src="js/register.js"></script>
+<script>
+    init_city_select($("#citySelect"));
+
+    $(".rec_top .res_topR").click(function () {
+        $(".box").css('display','block')
+    });
+    //点击X
+    $("#cancel").click(function () {
+        $(".box").css('display','none')
+    })
+</script>
+<script>
+    function popbox(){
+        $(".shade").css('display','block');
+        $('.popbox').animate({
+            'width': '500px',
+            'height': '412px',
+            'opacity':1,
+        },50)
+    }
+    function popbox2(){
+        $(".shade2").css('display','block');
+        $('.popbox2').animate({
+            'width': '500px',
+            'height': '412px',
+            'opacity':1,
+        },50)
+    }
+</script>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="css/login.css">
+    <script src="js/jQuery.js"></script>
+</head>
+<body>
+    <!--头部-->
+    <header><main>
+        <div class="h-left"></div>
+        <div class="h-right">
+            <a href="index.html" class="back">返回首页</a>
+            <a href="" class="problem">问题反馈</a>
+        </div>
+    </main></header>
+
+    <section class="login">
+        <main>
+            <div class="login-box">
+                <form action="">
+                    <div class="inputbox">
+                        <div class="i-logo"></div>
+                        <input type="text" class="username" name="" placeholder="请输入用户名/账号/手机号">
+                        <div class="i-ok i-ok1">√</div>
+                        <div class="i-no i-no1">!</div>
+                        <div class="tip tip1">请输入正确的手机号</div>
+                    </div>
+                    <div class="inputbox">
+                        <div class="i-logo i-logo2"></div>
+                        <input type="password" class="password" name="" placeholder="请输入您的密码">
+                        <div class="i-ok i-ok2">√</div>
+                        <div class="i-no i-no2">!</div>
+                        <div class="tip tip2">密码错误！</div>
+                    </div>
+                    <div class="remember">
+                        <input type="checkbox" class="ck">
+                        <a href="" class="forget">忘记密码？</a>
+                    </div>
+                    <button class="login-btn">马上登录</button>
+                    <span>还不是会员？<a href="#;;" class="reg-go">立马去注册</a></span>
+                </form>
+                <div class="share">
+                    <div><img src="img/qq.png" alt=""></div>
+                    <div><img src="img/weixin.png" alt=""></div>
+                    <div><img src="img/zfb.png" alt=""></div>
+                </div>
+            </div>
+        </main>
+    </section>
+
+    <footer><main><div class="flowers"></div></main></footer>
+<!--弹框  注册-->
+    <section class="shade">
+        <div class="popbox">
+            <div class="login-img"><div>立即<br>注册</div>WE<br>TO<br>EAT</div>
+            <div class="img-right"></div>
+            <main>
+                <input type="text" placeholder="请输入您的手机号码" class="reg-user">
+                <div class="YanZhengMa">
+                    <input type="text" placeholder="短信校验码" class="reg-yzm">
+                    <div class="get-yzm">获取短信校验码</div>
+                </div>
+                <input type="text" placeholder="请输入您的密码" class="reg-passwd">
+                <input type="text" placeholder="请再次输入您的密码" class="reg-passwd-re">
+                <button class="reg-btn">立即注册</button>
+                <p>已有账号? <span class="back-login">返回登录</span></p>
+            </main>
+        </div>
+    </section>
+</body>
+<script src="js/register.js"></script>
+<script src="js/login.js"></script>
+</html>

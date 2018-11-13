@@ -1,0 +1,369 @@
+@import "base.css";
+
+body{
+    height: 990px;
+    width: 100%;
+    padding-top: 100px;
+    box-sizing: border-box;
+    position: relative;
+    background: #fff;
+
+}
+header{
+    width: 100%;
+    height: 81px;
+}
+header main{
+    width: 1200px;
+    height: 81px;
+    margin: 0 auto;
+}
+.h-left{
+    width: 284px;
+    height: 81px;
+    float: left;
+    background: url("../img/img019.png");
+}
+.h-right{
+    width: 246px;
+    height: 81px;
+    float: right;
+    margin-right: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.h-right>a{
+    display: block;
+    width: 115px;
+    height: 31px;
+    border: 2px solid #fd719f;
+    border-radius: 15px;
+    font-size: 18px;
+    line-height: 31px;
+    text-align: center;
+}
+.back{
+    background: #fd719f;
+    color: #fff;
+}
+.problem{
+    background: #fff;
+    color: #6b6b6b;
+}
+
+.login>main{
+    width: 1200px;
+    margin: 0 auto;
+    position: relative;
+}
+.login-box{
+    width: 500px;
+    height: 412px;
+    border-radius: 6px;
+    margin-left: 98px;
+    margin-top: 104px;
+    padding-top: 57px;
+    box-sizing: border-box;
+}
+.inputbox{
+    width: 361px;
+    height: 38px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+.inputbox:nth-child(2){
+    margin-top: 38px;
+}
+.i-logo{
+    width: 38px;
+    height: 38px;
+    background: url("../img/img012.png");
+}
+.i-logo2{
+    background: url("../img/img013.jpg");
+}
+.username,.password{
+    width: 263px;
+    height: 34px;
+    border-radius: 16px;
+    border: 2px solid #dedede;
+    text-indent: 1em;
+    padding-right: 38px;
+}
+.remember{
+    width: 361px;
+    height: 24px;
+    margin: 16px auto 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.ck{
+    width: 16px;
+    height: 16px;
+    background: #d0d0d0;
+    margin-left: 80px;
+}
+.ck:after{
+    content: '记住密码';
+    display: block;
+    width: 90px;
+    margin-left: 22px;
+    line-height: 16px;
+    color: #737373;
+    font-size: 14px;
+}
+.forget{
+    display: block;
+    width: 100px;
+    height: 24px;
+    background: #ffbe2a;
+    color: #fff;
+    text-align: center;
+    line-height: 24px;
+    font-size: 14px;
+    border-radius: 12px;
+    margin-right: 8px;
+}
+.login-btn{
+    width: 305px;
+    height: 38px;
+    background: #ff4444;
+    border-radius: 19px;
+    font-size: 18px;
+    color: #fff;
+    border: 0;
+    margin: 0 auto;
+    display: block;
+}
+.login-box span{
+    font-size: 16px;
+    display: block;
+    width: 100%;
+    height: 16px;
+    text-align: center;
+    line-height: 16px;
+    margin: 17px auto 27px;
+    color: #b7b7b7;
+}
+.login-box a{
+    color: #f76798;
+}
+.share{
+    width: 133px;
+    height: 32px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.share>div{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #c7c7c7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.share>div:nth-child(1):hover{
+    background: #099cd5;
+}
+.share>div:nth-child(2):hover{
+    background: #09bb07;
+}
+.share>div:nth-child(3):hover{
+    background: #00aaef;
+}
+.share>div>img{
+    width: auto;
+    height: 20px;
+}
+.i-ok,.i-no{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ff4444;
+    text-align: center;
+    line-height: 20px;
+    font-weight: bolder;
+    font-size: 14px;
+    color: #fff;
+    position: absolute;
+    right: 10px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: none;
+}
+.i-ok{
+    background: #3af489;
+}
+.tip{
+    height: 14px;
+    width: 305px;
+    position: absolute;
+    top: -18px;
+    right: 0;
+    line-height: 14px;
+    text-align: right;
+    color: #ff4444;
+    display: none;
+}
+
+
+footer{
+    width: 100%;
+    height: 120px;
+    background: rgba(253,113,159,0.7);
+    position: absolute;
+    bottom: 96px;
+}
+footer main{
+    width: 1200px;
+    height: 100%;
+    position: relative;
+    margin: 0 auto;
+}
+.flowers{
+    width: 658px;
+    height: 778px;
+    background: url("../img/img014.jpg")no-repeat center/658px 778px;
+    position: absolute;
+    right: 60px;
+    bottom: 0;
+    z-index: -1;
+}
+/*弹出框*/
+.shade{
+    position: fixed;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background: rgba(0,0,0,.2);
+    display: none;
+}
+.popbox{
+    width: 0;
+    height: 0;
+    opacity: 0;
+    padding-top: 57px;
+    box-sizing: border-box;
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+.popbox:after{
+    content: '';
+    width: 500px;
+    height: 412px;
+    position: absolute;
+    top: 0;
+    border-radius: 6px;
+    z-index: 10;
+    background: #fff;
+}
+.login-img{
+    width: 143px;
+    height: 143px;
+    background: url("../img/img018.png");
+    position: absolute;
+    top: -99px;
+    left: 20px;
+    z-index: -10;
+    color: #fff;
+    font-size: 10px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.login-img>div{
+    width: 38px;
+    height: 38px;
+    line-height: 18px;
+    border-right: 1px solid #fff;
+    font-size: 16px;
+    margin-right: 5px;
+    font-weight: bold;
+    margin-left: 30px;
+}
+.img-right{
+    width: 126px;
+    height: 262px;
+    background: url("../img/img015.png");
+    position: absolute;
+    z-index: 20;
+    right: -30px;
+    top:90px;
+}
+.popbox>main{
+    width: 276px;
+    position: absolute;
+    z-index: 20;
+    left: 70px;
+}
+.reg-user,.reg-passwd,.reg-passwd-re,.reg-yzm{
+    width: 100%;
+    height: 34px;
+    border-radius: 17px;
+    border: 1px solid #dcdcdc;
+    box-sizing: border-box;
+    text-indent: 1em;
+    margin-bottom: 25px;
+}
+.YanZhengMa{
+    width: 100%;
+    height: 34px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+.reg-yzm{
+    width: 120px;
+    margin: 0;
+}
+.get-yzm{
+    width: 143px;
+    height: 34px;
+    border-radius: 17px;
+    background: #ccc;
+    text-align: center;
+    line-height: 34px;
+    font-size: 14px;
+    color: #999;
+    cursor: pointer;
+}
+.reg-btn{
+    width: 100%;
+    height: 34px;
+    border-radius: 17px;
+    background: #ff5353;
+    color: #fff;
+    font-size: 16px;
+    border: 0;
+    margin-top: 10px;
+}
+.popbox p{
+    width: 100%;
+    height: 14px;
+    font-size: 14px;
+    color: #a2a2a2;
+    text-align: center;
+    line-height: 14px;
+    margin-top: 15px;
+}
+.popbox p span{
+    color: #f76798;
+    cursor: pointer;
+}
